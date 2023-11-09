@@ -1,6 +1,10 @@
 import React from "react";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
-import { deleteOneItem } from "../redux/features/cartSlice";
+import {
+  deleteOneItem,
+  addItem,
+  subsractItem,
+} from "../redux/features/cartSlice";
 import { useDispatch } from "react-redux";
 const Cartitem = ({ id, img, title, price, amount }) => {
   const dispatch = useDispatch();
@@ -14,16 +18,18 @@ const Cartitem = ({ id, img, title, price, amount }) => {
           onClick={() => dispatch(deleteOneItem(id))}
           className="remove-btn"
         >
-          {" "}
           remove
         </button>
       </div>
       <div>
-        <button className="amount-btn">
+        <button onClick={() => dispatch(addItem(id))} className="amount-btn">
           <AiOutlineUp />
         </button>
         <p className="amount">{amount}</p>
-        <button className="amount-btn">
+        <button
+          onClick={() => dispatch(subsractItem(id))}
+          className="amount-btn"
+        >
           <AiOutlineDown />
         </button>
       </div>
