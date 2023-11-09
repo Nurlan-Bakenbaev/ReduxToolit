@@ -26,10 +26,19 @@ const cartSlice = createSlice({
       if (cartItem.amount > 1) {
         cartItem.amount = cartItem.amount - 1;
       }
-
+    },
+    calculateNewValue: (state) => {
+      let amount = 0;
+      let total = 0;
+      state.cartItems.forEach((el) => {
+        amount += el.amount;
+        total += el.amount * el.price;
+      });
+      state.amount = amount;
+      state.total = total;
     },
   },
 });
-export const { clearCart, deleteOneItem, addItem, subsractItem } =
+export const { calculateNewValue,clearCart, deleteOneItem, addItem, subsractItem, } =
   cartSlice.actions;
 export default cartSlice.reducer;

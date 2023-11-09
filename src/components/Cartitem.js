@@ -5,7 +5,7 @@ import {
   addItem,
   subsractItem,
 } from "../redux/features/cartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 const Cartitem = ({ id, img, title, price, amount }) => {
   const dispatch = useDispatch();
   return (
